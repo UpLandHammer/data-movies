@@ -8,7 +8,7 @@ This project get all 250 top movies.
 
 It is idealized by the [Alura](https://www.alura.com.br) school, who challenges the student is [Paulo Silveira](https://twitter.com/paulo_caelum?s=20&t=rdXt3W7TSM1JxhEGDpmSeQ) CEO of the Alura group. A great idea!
 
-###How to use?
+### How to use?
 
 Step 1: Download this project
 
