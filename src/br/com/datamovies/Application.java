@@ -1,7 +1,9 @@
 package br.com.datamovies;
 
+import br.com.datamovies.models.Movie;
 import br.com.datamovies.services.DataMovieInformation;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,25 +19,12 @@ public class Application {
 
         String topMovies = dataMovieInformation.getTopMovies("https://imdb-api.com/API/Top250Movies/");
 
-        LOGGER.log(Level.INFO, "Movies title list.");
+        LOGGER.log(Level.INFO, "Printing movies list");
 
-        dataMovieInformation
-                .getDataInformationByLabel(topMovies, "title")
-                .forEach(Application::printLogger);
+        List<Movie> moviesFrom = dataMovieInformation.getMoviesFrom(topMovies);
 
-        LOGGER.log(Level.INFO, "List of urls for movie poster images.");
-
-        dataMovieInformation
-                .getDataInformationByLabel(topMovies, "image")
-                .forEach(Application::printLogger);
-
-        dataMovieInformation
-                .getDataInformationByLabel(topMovies, "year")
-                .forEach(Application::printLogger);
+        LOGGER.log(Level.INFO, "Movie list {0}", moviesFrom);
 
     }
 
-    private static void printLogger(String content) {
-       LOGGER.log(Level.INFO, content);
-    }
 }
