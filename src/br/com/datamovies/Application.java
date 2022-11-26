@@ -1,20 +1,21 @@
 package br.com.datamovies;
 
-import br.com.datamovies.properties.ApplicationProperties;
 import br.com.datamovies.services.DataMovieInformation;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Application {
 
-    public static void main(String[] args) {
-        System.out.println("Data Movies");
+    private static final Logger LOGGER = Logger.getLogger(Application.class.getName());
 
-        ApplicationProperties applicationProperties = new ApplicationProperties();
-        String propertiesApplication = applicationProperties.getPropertiesApplication("api_key");
-        System.out.println(propertiesApplication);
+    public static void main(String[] args) {
+
+        LOGGER.log(Level.INFO, "Data Movies");
 
         String topMovies = new DataMovieInformation().getTopMovies("https://imdb-api.com/API/Top250Movies/");
 
-        System.out.println(topMovies);
+        LOGGER.log(Level.INFO, topMovies);
 
     }
 }
