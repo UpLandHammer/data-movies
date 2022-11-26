@@ -13,9 +13,29 @@ public class Application {
 
         LOGGER.log(Level.INFO, "Data Movies ");
 
-        String topMovies = new DataMovieInformation().getTopMovies("https://imdb-api.com/API/Top250Movies/");
+        DataMovieInformation dataMovieInformation = new DataMovieInformation();
 
-        LOGGER.log(Level.INFO, topMovies);
+        String topMovies = dataMovieInformation.getTopMovies("https://imdb-api.com/API/Top250Movies/");
 
+        LOGGER.log(Level.INFO, "Movies title list.");
+
+        dataMovieInformation
+                .getDataInformationByLabel(topMovies, "title")
+                .forEach(Application::printLogger);
+
+        LOGGER.log(Level.INFO, "List of urls for movie poster images.");
+
+        dataMovieInformation
+                .getDataInformationByLabel(topMovies, "image")
+                .forEach(Application::printLogger);
+
+        dataMovieInformation
+                .getDataInformationByLabel(topMovies, "year")
+                .forEach(Application::printLogger);
+
+    }
+
+    private static void printLogger(String content) {
+       LOGGER.log(Level.INFO, content);
     }
 }

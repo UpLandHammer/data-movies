@@ -9,6 +9,8 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataMovieInformation {
 
@@ -17,6 +19,33 @@ public class DataMovieInformation {
     public String getTopMovies(String url) {
 
         return getResourceFrom(url);
+    }
+
+    public List<String> getDataInformationByLabel(String jsonContent, String label) {
+
+        List<String> listOfLabel = new ArrayList<>();
+
+        String[] splitContent = jsonContent.split("\\[");
+
+        String[] arrayMovies = splitContent[1].split("\\{");
+
+        for (String arrayMovie : arrayMovies) {
+            String[] attributesArray = arrayMovie.split(",");
+            for (String s : attributesArray) {
+                if (s.contains(label)) {
+                    listOfLabel.add(getSubContent(s, 3));
+                }
+            }
+
+        }
+
+
+        return listOfLabel;
+    }
+
+    private String getSubContent(String content, int position) {
+        String[] split = content.split("\"");
+        return split[position];
     }
 
     private String getResourceFrom(String url) {
