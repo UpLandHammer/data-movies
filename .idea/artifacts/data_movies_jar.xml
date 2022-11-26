@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="data-movies:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/data_movies_jar</output-path>
+    <root id="root">
+      <element id="archive" name="data-movies.jar">
+        <element id="module-output" name="data-movies" />
+      </element>
+    </root>
+  </artifact>
+</component>
