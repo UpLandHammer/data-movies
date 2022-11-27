@@ -2,6 +2,7 @@ package br.com.datamovies.models;
 
 public class Movie {
 
+    private String rankPosition;
     private String title;
     private String urlImage;
     private String rating;
@@ -21,6 +22,30 @@ public class Movie {
 
     public void setYear(String year) {
         this.year = year;
+    }
+
+    public void setRankPosition(String rankPosition) {
+        this.rankPosition = rankPosition;
+    }
+
+    public String getRankPosition() {
+        return rankPosition;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public String getYear() {
+        return year;
     }
 
     public boolean hasContent() {

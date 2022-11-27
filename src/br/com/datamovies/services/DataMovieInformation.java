@@ -64,8 +64,11 @@ public class DataMovieInformation {
             if (movieAttribute.contains("year")) {
                 movie.setYear(getContentFromAttribute(movieAttribute));
             }
-            if (movieAttribute.contains("imDbRating")) {
+            if (movieAttribute.contains("\"imDbRating\"")) {
                 movie.setRating(getContentFromAttribute(movieAttribute));
+            }
+            if (movieAttribute.contains("\"rank\"")) {
+                movie.setRankPosition(getContentFromAttribute(movieAttribute));
             }
         }
         return movie;
