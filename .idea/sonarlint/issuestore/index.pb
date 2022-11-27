@@ -9,3 +9,9 @@ t
 Dsrc/br/com/datamovies/exceptions/ApplicationPropertiesException.java,4\4\441fd2a99a7907600c27e598f354c069ebf500c5
 k
 ;src/br/com/datamovies/properties/ApplicationProperties.java,e\8\e8c19c5a4305bd60f6b31cc311f48719557c79c1
+h
+8src/br/com/datamovies/services/DataMovieInformation.java,3\7\37bc0a9e7e7b3c24917b7bd9206a3525373e716f
+V
+&src/br/com/datamovies/Application.java,c\6\c6c62504031c0696f15fc3c5d60fce155a6d9b51
+W
+'src/br/com/datamovies/models/Movie.java,8\5\85d27c14ff64ef5b73fbbf71d33e4fc5c5953375
