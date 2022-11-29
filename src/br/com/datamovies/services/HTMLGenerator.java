@@ -1,17 +1,26 @@
 package br.com.datamovies.services;
 
+import br.com.datamovies.exceptions.DataMovieInformationException;
 import br.com.datamovies.models.Movie;
 
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.List;
 
 public class HTMLGenerator {
 
-    private final PrintWriter printWriter;
+    private PrintWriter printWriter;
 
-    public HTMLGenerator(PrintWriter printWriter) {
-        this.printWriter = printWriter;
+    public void generateHtmlPageMovies(List<Movie> movies) {
+        try {
+            this.printWriter = new PrintWriter("src/movie_list.html");
+            this.generate(movies);
+            printWriter.close();
+        } catch (FileNotFoundException ex) {
+            throw new DataMovieInformationException("Fail to generate html page", ex);
+        }
     }
+
 
     public void generate(List<Movie> movies) {
 
@@ -51,10 +60,6 @@ public class HTMLGenerator {
 
         pageContent.append("</body>");
         pageContent.append("</html>");
-
-
         this.printWriter.println(pageContent);
-
-
     }
 }
