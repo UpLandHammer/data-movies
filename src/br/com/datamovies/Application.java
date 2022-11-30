@@ -1,12 +1,15 @@
 package br.com.datamovies;
 
+import br.com.datamovies.http.client.Content;
 import br.com.datamovies.http.client.impl.ImdbApiClientImpl;
-import br.com.datamovies.models.Movie;
+import br.com.datamovies.http.client.impl.MarvelApiClientImpl;
 import br.com.datamovies.services.HTMLGenerator;
 
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Application {
 
@@ -16,9 +19,16 @@ public class Application {
 
         LOGGER.log(Level.INFO, "Data Movies html page generator.");
 
-        List<Movie> movies = new ImdbApiClientImpl().findTopMovies();
 
-        new HTMLGenerator().generateHtmlPageMovies(movies);
+        List<? extends Content> movies = new ImdbApiClientImpl().findTopTitles();
+
+        List<? extends Content> comics = new MarvelApiClientImpl().findTopTitles();
+
+        List<Content> content = Stream.concat(movies.stream(), comics.stream()).collect(Collectors.toList());
+
+        new HTMLGenerator().generateHtmlPageMovies(content);
+
+
 
         LOGGER.log(Level.INFO, "Html page generated.");
 

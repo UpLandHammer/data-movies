@@ -1,7 +1,7 @@
 package br.com.datamovies.services;
 
 import br.com.datamovies.exceptions.DataMovieInformationException;
-import br.com.datamovies.models.Movie;
+import br.com.datamovies.http.client.Content;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -11,10 +11,10 @@ public class HTMLGenerator {
 
     private PrintWriter printWriter;
 
-    public void generateHtmlPageMovies(List<Movie> movies) {
+    public void generateHtmlPageMovies(List<? extends Content> contents) {
         try {
             this.printWriter = new PrintWriter("src/movie_list.html");
-            this.generate(movies);
+            this.generate(contents);
             printWriter.close();
         } catch (FileNotFoundException ex) {
             throw new DataMovieInformationException("Fail to generate html page", ex);
@@ -22,7 +22,7 @@ public class HTMLGenerator {
     }
 
 
-    public void generate(List<Movie> movies) {
+    public void generate(List<? extends Content> contents) {
 
         StringBuilder pageContent = new StringBuilder();
 
@@ -45,12 +45,12 @@ public class HTMLGenerator {
 
         pageContent.append("<div class=\"row\">");
 
-        for (Movie movie : movies) {
+        for (Content content : contents) {
             pageContent.append("<div class=\"card text-bg-secondary mb-3\" style=\"width: 10rem;\">\n" +
-                    "            <img src=\"" + movie.getUrlImage() + "\" class=\"card-img-top\" alt=\""+ movie.getTitle() +"\">\n" +
+                    "            <img src=\"" + content.getUrlImage() + "\" class=\"card-img-top\" alt=\""+ content.getTitle() +"\">\n" +
                     "            <div class=\"card-body\">\n" +
-                    "                <h5 class=\"card-title\">" + movie.getTitle() + "</h5>\n" +
-                    "                <p class=\"card-text\">Nota " + movie.getRating() + " - Ano: " + movie.getYear() + "</p>\n" +
+                    "                <h5 class=\"card-title\">" + content.getTitle() + "</h5>\n" +
+                    "                <p class=\"card-text\">Nota " + content.getRating() + " - Ano: " + content.getYear() + "</p>\n" +
                     "            </div>\n" +
                     "        </div>");
         }

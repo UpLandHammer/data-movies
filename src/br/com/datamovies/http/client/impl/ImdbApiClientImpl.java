@@ -1,10 +1,11 @@
 package br.com.datamovies.http.client.impl;
 
 import br.com.datamovies.exceptions.DataMovieInformationException;
-import br.com.datamovies.http.client.ImdbApiClient;
-import br.com.datamovies.models.Movie;
+import br.com.datamovies.http.client.ApiClient;
+import br.com.datamovies.http.client.Content;
+import br.com.datamovies.models.imdb.ImdbInformationMovies;
 import br.com.datamovies.properties.ApplicationProperties;
-import br.com.datamovies.utils.DataMovieInformationUtils;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.net.URI;
@@ -14,15 +15,14 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 
-public class ImdbApiClientImpl implements ImdbApiClient {
+public class ImdbApiClientImpl implements ApiClient {
 
-    public static final String API_KEY_LABEL = "api_key";
+    public static final String API_KEY_LABEL = "api_key_imdb";
 
     @Override
-    public List<Movie> findTopMovies() {
-        DataMovieInformationUtils dataMovieInformationUtils = new DataMovieInformationUtils();
+    public List<? extends Content> findTopTitles() {
         String topMovies = this.getResourceFrom("https://imdb-api.com/API/Top250Movies/");
-        return dataMovieInformationUtils.parseJsonToListMovies(topMovies);
+        return this.toObject(topMovies);
     }
 
     private String getResourceFrom(String url) {
@@ -42,5 +42,11 @@ public class ImdbApiClientImpl implements ImdbApiClient {
             Thread.currentThread().interrupt();
             throw new DataMovieInformationException(String.format("Fail to get data from %s", url), e);
         }
+    }
+
+    public List<? extends Content> toObject(String json) {
+        Gson gson = new Gson();
+        ImdbInformationMovies imdbInformationMovies = gson.fromJson(json, ImdbInformationMovies.class);
+        return imdbInformationMovies.getItems();
     }
 }
