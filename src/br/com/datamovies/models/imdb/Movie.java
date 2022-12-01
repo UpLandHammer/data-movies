@@ -1,8 +1,8 @@
 package br.com.datamovies.models.imdb;
 
-import br.com.datamovies.http.client.Content;
+import br.com.datamovies.models.Content;
 
-public class Movie implements Content {
+public class Movie implements Content, Comparable<Content> {
 
     private String id;
     private String rank;
@@ -55,6 +55,11 @@ public class Movie implements Content {
         return year;
     }
 
+    @Override
+    public String getType() {
+        return "Movie";
+    }
+
     public boolean hasContent() {
         return title != null && !title.isEmpty() ||
                image != null && !image.isEmpty();
@@ -68,5 +73,10 @@ public class Movie implements Content {
                 ", rating='" + image + '\'' +
                 ", year='" + year + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Content o) {
+        return o.getTitle().compareTo(o.getTitle());
     }
 }

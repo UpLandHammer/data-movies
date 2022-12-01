@@ -1,4 +1,4 @@
-package br.com.datamovies.models.imdb.marvel;
+package br.com.datamovies.models.marvel;
 
 public class Item {
     private String resourceURI;

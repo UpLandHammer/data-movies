@@ -1,8 +1,8 @@
-package br.com.datamovies.models.imdb.marvel;
+package br.com.datamovies.models.marvel;
 
 import java.util.List;
 
-public class Creators {
+public class Events {
 
     private int available;
     private String collectionURI;

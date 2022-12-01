@@ -1,8 +1,8 @@
-package br.com.datamovies.models.imdb.marvel;
+package br.com.datamovies.models.marvel;
 
 import java.util.List;
 
-public class Stories {
+public class Characters {
 
     private int available;
     private String collectionURI;

@@ -1,4 +1,4 @@
-package br.com.datamovies.http.client;
+package br.com.datamovies.models;
 
 public interface Content {
 
@@ -9,4 +9,6 @@ public interface Content {
     String getRating();
 
     String getYear();
+
+    String getType();
 }

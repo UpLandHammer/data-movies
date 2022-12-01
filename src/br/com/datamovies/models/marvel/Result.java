@@ -1,10 +1,10 @@
-package br.com.datamovies.models.imdb.marvel;
+package br.com.datamovies.models.marvel;
 
-import br.com.datamovies.http.client.Content;
+import br.com.datamovies.models.Content;
 
 import java.util.List;
 
-public class Result implements Content {
+public class Result implements Content, Comparable<Content> {
 
     private int id;
     private String title;
@@ -115,6 +115,7 @@ public class Result implements Content {
         this.rating = rating;
     }
 
+    @Override
     public String getType() {
         return type;
     }
@@ -193,5 +194,10 @@ public class Result implements Content {
 
     public void setPrevious(Object previous) {
         this.previous = previous;
+    }
+
+    @Override
+    public int compareTo(Content o) {
+        return this.title.compareTo(o.getTitle());
     }
 }

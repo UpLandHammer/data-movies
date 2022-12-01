@@ -2,7 +2,7 @@ package br.com.datamovies.http.client.impl;
 
 import br.com.datamovies.exceptions.DataMovieInformationException;
 import br.com.datamovies.http.client.ApiClient;
-import br.com.datamovies.http.client.Content;
+import br.com.datamovies.models.Content;
 import br.com.datamovies.models.imdb.ImdbInformationMovies;
 import br.com.datamovies.properties.ApplicationProperties;
 import com.google.gson.Gson;
