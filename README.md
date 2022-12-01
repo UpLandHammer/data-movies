@@ -13,12 +13,12 @@ It is idealized by the [Alura](https://www.alura.com.br) school, who challenges 
 Step 1: Download this project
 
 Step 2: 
-    - Create a file with name "properties.txt" on /src folder 
-    - Put a string with key created on [IMDB Api](https://imdb-api.com/API) on this format: "api_key:your-key", because the application use this for Http Request on Imdb Api.
-    - Put a string with public key, private key and ts(timestamp) both created on [Marvel Api](https://developer.marvel.com/docs) on this format: 
-        * public_key_marvel:{content}
-        * private_key_marvel:{content}
-        * ts_key_marvel:{content}
+- Create a file with name "properties.txt" on /src folder 
+- Put a string with key created on [IMDB Api](https://imdb-api.com/API) on this format: "api_key:your-key", because the application use this for Http Request on Imdb Api.
+- Put a string with public key, private key and ts(timestamp) both created on [Marvel Api](https://developer.marvel.com/docs) on this format: 
+    1. public_key_marvel:{content}
+    2. private_key_marvel:{content}
+    3. ts_key_marvel:{content}
 
 Step 3: Execute on your IDE or compile yourself and use on command line.
 
