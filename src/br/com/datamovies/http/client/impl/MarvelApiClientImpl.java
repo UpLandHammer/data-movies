@@ -2,10 +2,10 @@ package br.com.datamovies.http.client.impl;
 
 import br.com.datamovies.exceptions.DataMovieInformationException;
 import br.com.datamovies.http.client.ApiClient;
-import br.com.datamovies.http.client.Content;
-import br.com.datamovies.models.imdb.marvel.Data;
-import br.com.datamovies.models.imdb.marvel.DataMarvelInformationStories;
-import br.com.datamovies.models.imdb.marvel.Result;
+import br.com.datamovies.models.Content;
+import br.com.datamovies.models.marvel.Data;
+import br.com.datamovies.models.marvel.DataMarvelInformationStories;
+import br.com.datamovies.models.marvel.Result;
 import br.com.datamovies.properties.ApplicationProperties;
 import br.com.datamovies.utils.DataApiInformationUtils;
 import com.google.gson.Gson;
@@ -29,7 +29,6 @@ public class MarvelApiClientImpl implements ApiClient {
         String resourceFrom = this.getResourceFrom("http://gateway.marvel.com/v1/public/series");
         return this.toObject(resourceFrom);
     }
-
 
     private String getResourceFrom(String url) {
         try {

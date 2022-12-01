@@ -1,7 +1,7 @@
 package br.com.datamovies.services;
 
 import br.com.datamovies.exceptions.DataMovieInformationException;
-import br.com.datamovies.http.client.Content;
+import br.com.datamovies.models.Content;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -51,6 +51,7 @@ public class HTMLGenerator {
                     "            <div class=\"card-body\">\n" +
                     "                <h5 class=\"card-title\">" + content.getTitle() + "</h5>\n" +
                     "                <p class=\"card-text\">Nota " + content.getRating() + " - Ano: " + content.getYear() + "</p>\n" +
+                    "                <p class=\"card-text\">" + content.getType() + "</p>\n" +
                     "            </div>\n" +
                     "        </div>");
         }
